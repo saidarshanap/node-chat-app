@@ -19,9 +19,10 @@ io.on('connection',(socket) => {
     socket.emit('newMessage',generateMessage('Admin','Welcome To App'));
     socket.broadcast.emit('newMessage',generateMessage('Admin','New User Joined'));
 
-    socket.on('createMessage', (message)=>{
+    socket.on('createMessage', (message,callback)=>{
         console.log('createMsg: ',message); 
-        io.emit('newMessage',generateMessage(message.from,msg.text)); 
+        io.emit('newMessage',generateMessage(message.from,message.text)); 
+        callback('This is from the Admin');
         /* socket.broadcast.emit('newMessage',{
             from: message.from,
             text: message.text,
