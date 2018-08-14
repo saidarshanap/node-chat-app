@@ -9,13 +9,14 @@ socket.on('disconnect', function () {
 });
 
 socket.on('newMessage', function (message) {
-  console.log('newMessage', message);
-  var li = jQuery(`<tr><td>${message.from}</td><td class="mail-subject">${message.text}</td></tr>`);
+  var formattedTime= moment(message.createdAt).format('h:mm a');
+  var li = jQuery(`<tr><td>${message.from}</td><td>${formattedTime}</td><td class="mail-subject">${message.text}</td></tr>`);
   jQuery('#messages').append(li);
 });
 
 socket.on('newLocationMessage', function (message) {
-  var li = jQuery(`<tr><td>${message.from}</td><td class="mail-subject"><a target="_blank" href=${message.url}>My current location</a></td></tr>`);
+  var formattedTime= moment(message.createdAt).format('h:mm a');
+  var li = jQuery(`<tr><td>${message.from}</td><td>${formattedTime}</td><td class="mail-subject"><a target="_blank" href=${message.url}>My current location</a></td></tr>`);
   jQuery('#messages').append(li);
 });
 
