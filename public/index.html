@@ -74,9 +74,25 @@
             </div>
         </div>
     </div>
+
+    <script id="message-template" type="text/template">
+        <tr class="message">
+            <td>{{from}}</td>
+            <td>{{createdAt}}</td>
+            <td class="mail-subject">{{text}}</td>
+        </tr>
+    </script>
+    <script id="location-message-template" type="text/template">
+        <tr class="message">
+            <td>{{from}}</td>
+            <td>{{createdAt}}</td>
+            <td class="mail-subject"><a target="_blank" href={{url}}>My current location</a></td>
+        </tr>
+    </script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/libs/jquery-3.1.0.min.js"></script>
     <script src="js/libs/moment.js"></script>
+    <script src="js/libs/mustache.js"></script>
     <script src="js/index.js"></script>
     <script src="js/libs/main.js"></script>
 </body>
