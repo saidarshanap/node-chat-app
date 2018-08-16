@@ -45,15 +45,14 @@
                         <p>Admin</p>
                     </div>
                 </div>
-                <!-- Sidebar Menu-->
                 <ul class="sidebar-menu">
-                    <li class="active">
-                        <a href="index.html">
-                            <i class="fa fa-user"></i>
-                            <span id="users"></span>
-                        </a>
+                    <li class="treeview">
+                            <a href="#"><i class="fa fa-laptop"></i><span>Active</span><i class="fa fa-angle-right"></i></a>
+                            <ul class="treeview-menu"  id="users" style="display: none;">
+                            </ul>
                     </li>
                 </ul>
+                <!-- Sidebar Menu-->               
             </section>
         </aside>
         <div class="content-wrapper">
@@ -97,6 +96,7 @@
     <script src="js/libs/jquery-3.1.0.min.js"></script>
     <script src="js/libs/moment.js"></script>
     <script src="js/libs/mustache.js"></script>
+    <script src="js/libs/deparam.js"></script>
     <script src="js/chat.js"></script>
     <script src="js/libs/main.js"></script>
 </body>
