@@ -10,8 +10,8 @@
 
 <body class="sidebar-mini fixed">
     <div class="wrapper">
-        <header class="main-header hidden-print">
-            <a href="index.html" class="logo">GChat</a>
+        <header class="main-header hidden-print" >
+            <a style="font-family: chilanka;" class="logo"><i class="fa fa-lg fa-fw fa-whatsapp"></i></a>
             <nav class="navbar navbar-static-top">
                 <!-- Sidebar toggle button-->
                 <a href="#" data-toggle="offcanvas" class="sidebar-toggle"></a>
@@ -23,14 +23,14 @@
             <div class="col-md-12">
                 <div>
                     <form id="message-form">
-                        <input class="form-control" name="message" type="text" placeholder="Message" autofocus autocomplete="off" />
+                        <input style="font-family: chilanka;" class="form-control" name="message" type="text" placeholder="Message" autofocus autocomplete="off" />
                         <!-- <div class="col-md-6">
                                        <!--  <button class="form-control btn-success ">Send</button>
                                     </div> -->
                     </form>
                     <div class="col">
-                        <button class="form-control btn-warning" id="send-location">
-                            <i class="fa fa-location-arrow"></i>
+                        <button class="form-control btn-info" id="send-location">
+                             <i class="fa fa-lg fa-map-marker "></i> 
                         </button>
                     </div>
                 </div>
@@ -39,15 +39,15 @@
             <section class="sidebar">
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="img/pro.jpg" alt="User Image" class="img-circle">
+                    <img src="img/pro.jpg" alt="User Image" class="img-circle">
                     </div>
                     <div class="pull-left info">
-                        <p>Admin</p>
+                        <p id="username" style="font-family: chilanka;"></p>
                     </div>
                 </div>
                 <ul class="sidebar-menu">
                     <li class="treeview">
-                            <a href="#"><i class="fa fa-laptop"></i><span>Active</span><i class="fa fa-angle-right"></i></a>
+                            <a href="#"><i class="fa fa-laptop"></i><span style="font-family: chilanka;">Active </span><i class="fa fa-angle-right"></i></a>
                             <ul class="treeview-menu"  id="users" style="display: none;">
                             </ul>
                     </li>
@@ -56,17 +56,10 @@
             </section>
         </aside>
         <div class="content-wrapper">
-            <div class="page-title">
-                <div>
-                    <h1>
-                        Welcome to the chat app
-                    </h1>
-                </div>
-            </div>
             <div class="col-md-12">
                 <div class="card">
                     <div class="table-responsive mailbox-messages">
-                        <table class="table table-hover">
+                        <table class="table table-hover" style="font-family: chilanka;">
                             <tbody id="messages">
 
                             </tbody>
@@ -78,17 +71,17 @@
     </div>
     <script id="message-template" type="text/template">
         <tr class="message">
-            <td>{{from}}</td>
-            <td>{{createdAt}}</td>
-            <td class="mail-subject">{{text}}</td>
+            <td>📝 {{from}}</td>
+            <td>⌚{{createdAt}}</td>
+            <td class="mail-subject">📬 {{text}}</td>
         </tr>
     </script>
     <script id="location-message-template" type="text/template">
         <tr class="message">
-            <td>{{from}}</td>
-            <td>{{createdAt}}</td>
+            <td>📝 {{from}}</td>
+            <td>⌚{{createdAt}}</td>
             <td class="mail-subject">
-                <a target="_blank" href={{url}}>My current location</a>
+                <a target="_blank" href={{url}}>📬 My current location 🌍</a>
             </td>
         </tr>
     </script>

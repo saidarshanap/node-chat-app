@@ -14,7 +14,7 @@ const {
 const {Users}= require('./utils/users');
 
 const publicPath = path.join(__dirname, '../public');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 var app = express();
 var server = http.createServer(app);
 var io = socketIO(server);
@@ -34,8 +34,8 @@ io.on('connection', (socket) => {
     users.addUser(socket.id,params.name,params.room);
     
     io.to(params.room).emit('updateUserList', users.getUserList(params.room));
-    socket.emit('newMessage', generateMessage('Admin', 'Welcome to the chat app'));
-    socket.broadcast.to(params.room).emit('newMessage', generateMessage('Admin', `${params.name} has joined`));
+    socket.emit('newMessage', generateMessage(`${params.room}`, `Welcome ${params.name}`));
+    socket.broadcast.to(params.room).emit('newMessage', generateMessage(`${params.room}`, `${params.name} has joined`));
 
     callback();
   });
@@ -60,7 +60,7 @@ io.on('connection', (socket) => {
 
     if(user){
       io.to(user.room).emit('updateUserList',users.getUserList(user.room));
-      io.to(user.room).emit('newMessage',generateMessage('Admin',`${user.name} has left`));
+      io.to(user.room).emit('newMessage',generateMessage(`${user.room}`,`${user.name} has left`));
     }
   });
 });

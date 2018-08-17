@@ -18,7 +18,8 @@ function scrolltoBottom(){
 
 socket.on('connect', function () {
   var params = jQuery.deparam(window.location.search);
-
+  jQuery('#username').text(params.name);
+  jQuery('.logo').append(params.room);
   socket.emit('join',params,function(err){
     if(err){
       alert(err);
@@ -36,9 +37,9 @@ socket.on('disconnect', function () {
 socket.on('updateUserList',function (users){
     var ol= jQuery('<ol id="users"></ol>');
     users.forEach(function (user){
-      var li= jQuery('<li></li>');
+      var li= jQuery('<li style="font-family: Ani;"></li>');
       var a= jQuery('<a></a>');
-      ol.append(jQuery(li.append(a).text(user+"  ")));
+      ol.append(jQuery(li.append(a).text("😁   "+user+"  ")));
     });  
     jQuery('#users').html(ol);
 });
@@ -52,6 +53,7 @@ socket.on('newMessage', function (message) {
     createdAt: formattedTime
   });
   jQuery('#messages').append(html);
+  //jQuery('#messages').append(html);
   scrolltoBottom();
 });
 
@@ -63,7 +65,7 @@ socket.on('newLocationMessage', function (message) {
     from: message.from,
     createdAt: formattedTime
   });
-  jQuery('#messages').append(html); 
+  jQuery('.table').children('tbody:first-child').html(html); 
   scrolltoBottom();
 });
 
@@ -87,7 +89,7 @@ locationButton.on('click', function () {
   locationButton.attr('disabled','disabled').text('Sending location...');
   navigator.geolocation.getCurrentPosition(function (position) {
     locationButton.removeAttr('disabled').text('');
-    var i= jQuery('<i class="fa fa-location-arrow"></>');
+    var i= jQuery('<i class="fa fa-lg fa-map-marker"></>');
     locationButton.append(i)
     socket.emit('createLocationMessage', {
       latitude: position.coords.latitude,
@@ -95,7 +97,7 @@ locationButton.on('click', function () {
     });
   }, function () {
     locationButton.removeAttr('disabled').text('');
-    var i= jQuery('<i class="fa fa-location-arrow"></>');
+    var i= jQuery('<i class="fa fa-lg fa-map-marker"></>');
     locationButton.append(i)
     alert('Unable to fetch location.');
   });
